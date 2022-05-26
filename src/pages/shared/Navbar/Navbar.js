@@ -1,6 +1,8 @@
 import React from 'react';
 import CustomLink from "../CustomLink/CustomLink"
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+
 import auth from '../../../firebase.init';
 
 const Navbar = () => {
@@ -26,7 +28,7 @@ const Navbar = () => {
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/dashboard'>Dashboard</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/purchase'>Purchase</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/reviews'>Reviews</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/contact-us'>Contact Us</CustomLink>
+                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/contact-us'>Contact</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>
                                 </ul>
@@ -51,7 +53,7 @@ const Navbar = () => {
                                     {
                                         user ? <>
                                             <li className="">
-                                                <button className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
+                                                <button onClick={() => signOut(auth)} className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
                                             </li>
                                         </> : <>
                                             <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
@@ -70,10 +72,10 @@ const Navbar = () => {
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Purchase</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Contact Us</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Contact</CustomLink>
                                 {
                                     user ? <>
-                                        <button className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
+                                        <button onClick={() => signOut(auth)} className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
                                     </> : <>
                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/login'>Login</CustomLink>
                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>
