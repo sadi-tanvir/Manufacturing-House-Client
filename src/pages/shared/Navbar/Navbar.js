@@ -1,11 +1,15 @@
 import React from 'react';
 import CustomLink from "../CustomLink/CustomLink"
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+    console.log(user);
     return (
         <>
             <header>
-                <nav>
+                <nav className="w-full ">
                     <div class="navbar bg-base-100">
                         <div class="navbar-start">
                             {/* medium size */}
@@ -24,6 +28,7 @@ const Navbar = () => {
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/reviews'>Reviews</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/contact-us'>Contact Us</CustomLink>
                                     <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
+                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>
                                 </ul>
                             </div>
                         </div>
@@ -43,10 +48,17 @@ const Navbar = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
                                 </label>
                                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li className="">
+                                    {
+                                        user ? <>
+                                            <li className="">
+                                                <button className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
+                                            </li>
+                                        </> : <>
+                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
+                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block" to='/register'>Register</CustomLink>
+                                        </>
+                                    }
 
-                                        <button className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
-                                    </li>
 
                                 </ul>
                             </div>
@@ -54,13 +66,19 @@ const Navbar = () => {
 
                         {/* medium size */}
                         <div className="hidden md:block">
-                            <div class="flex justify-center mt-5">
+                            <div class="flex justify-end items-center mt-5 md:ml-32">
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Purchase</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Contact Us</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/login'>Login</CustomLink>
-                                <button className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold -mt-2">Logout</button>
+                                {
+                                    user ? <>
+                                        <button className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
+                                    </> : <>
+                                        <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/login'>Login</CustomLink>
+                                        <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>
+                                    </>
+                                }
                             </div>
                         </div>
                     </div>
