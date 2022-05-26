@@ -20,7 +20,7 @@ const HomeProductCard = ({product}) => {
                     <p className="text-lg font-semibold">Minimum Order: {minimum_order_qty} pcs</p>
                     <p className="text-lg font-semibold">Descripttion: {description.length > 50 ? description.slice(0,50): description}...</p>
                     <div class="card-actions">
-                        <button onClick={() => navigate(`/purchase/${_id}`)} class="btn mx-auto w-full mt-2 bg-cyan-700 border-none hover:bg-cyan-800">Please Order</button>
+                        <button onClick={() => navigate(`/purchase/${_id}`)} class="btn mx-auto w-full mt-2 bg-sky-700 border-none hover:bg-sky-800">Please Order</button>
                     </div>
                 </div>
             </div>

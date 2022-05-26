@@ -7,7 +7,7 @@ const SummaryCard = ({children, text, num}) => {
             <div className="flex flex-col justify-center items-center">
                 {children}
                 <h1 className="text-xl font-bold mt-2">{num}</h1>
-                <p className="text-lg font-semibold text-cyan-600 mt-2">{text}</p>
+                <p className="text-lg font-semibold text-sky-600 mt-2">{text}</p>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ import HomeReviewCard from './HomeReviewCard';
 const HomeReview = () => {
     return (
         <div className="my-20">
-            <h2 className="text-cyan-600 text-4xl font-bold text-center my-5">What folks are saying about us?</h2>
+            <h2 className="text-sky-600 text-4xl font-bold text-center my-5">What folks are saying about us?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-5">
                 <HomeReviewCard
                     name="Mr. Abdullah Khan"
