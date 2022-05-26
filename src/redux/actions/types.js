@@ -1,0 +1,1 @@
+export const IS_CHANGE = "IS_CHANGE"
