@@ -10,7 +10,7 @@ const HomeBusinessSummary = () => {
         <div className="w-full">
             <h1 className="capitalize text-4xl text-center text-cyan-600 font-bold">our business summary</h1>
             <p className="text-lg font-semibold text-center">try to look up the client's expectation</p>
-            <div className="w-full flex justify-evenly items-center">
+            <div className="w-full grid grid-cols-2 md:grid-cols-4">
             <SummaryCard text="Countries" num={55}>
                 <FlagIcon />
             </SummaryCard>

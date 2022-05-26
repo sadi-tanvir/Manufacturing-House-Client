@@ -7,7 +7,7 @@ import banner_2 from "../../../assets/banner/banner-2.jpg"
 const HomeCarousel = () => {
     return (
         <>
-            <div class="carousel w-full h-96">
+            <div class="carousel h-96">
                 <div id="slide1" class="carousel-item relative w-full">
                     <img src={banner_1} alt="banner-1" class="w-full" />
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
