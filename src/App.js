@@ -16,6 +16,7 @@ import Reviews from './pages/Reviews/Reviews';
 import setAuthToken from './utils/setAuthToken';
 import ManageAllOrders from './pages/Dashboard/ManageAllOrders';
 import AddProduct from './pages/Dashboard/AddProduct';
+import ManageAllUsers from './pages/Dashboard/ManageAllUsers';
 
 const App = () => {
   if(localStorage.getItem('token')){
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="myProfile" element={<MyProfile />} />
           <Route path="ManageAllOrders" element={<ManageAllOrders />} />
           <Route path="addProduct" element={<AddProduct />} />
+          <Route path="manageAllUsers" element={<ManageAllUsers />} />
         </Route>
         <Route path="/login" element={
           <CheckAuth>

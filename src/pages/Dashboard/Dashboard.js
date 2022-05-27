@@ -22,6 +22,9 @@ const Dashboard = () => {
           <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/myProfile'>
             My Profile
           </CustomLink>
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/manageAllUsers'>
+            Mange All Users
+          </CustomLink>
           <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/ManageAllOrders'>
             Manage All Orders
           </CustomLink>
