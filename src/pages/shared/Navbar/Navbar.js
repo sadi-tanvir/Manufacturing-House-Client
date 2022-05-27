@@ -4,10 +4,18 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 
 import auth from '../../../firebase.init';
+import setAuthToken from '../../../utils/setAuthToken';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
+
+
+   const handleSignOut =async () =>{
+    await signOut(auth)
+    localStorage.clear()
+    setAuthToken(false)
+   }
+    
     return (
         <>
             <header>
@@ -52,7 +60,7 @@ const Navbar = () => {
                                     {
                                         user ? <>
                                             <li className="">
-                                                <button onClick={() => signOut(auth)} className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
+                                                <button onClick={handleSignOut} className="bg-slate-700 text-white px-3 py-2 rounded font-bold ">Logout</button>
                                             </li>
                                         </> : <>
                                             <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
@@ -75,7 +83,7 @@ const Navbar = () => {
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 {
                                     user ? <>
-                                        <button onClick={() => signOut(auth)} className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
+                                        <button onClick={handleSignOut} className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
                                     </> : <>
                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/login'>Login</CustomLink>
                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>

@@ -40,7 +40,7 @@ const Register = () => {
         const { name, email, password } = userInfo;
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({ displayName: name });
-        // const res = await axios.put(`${apiBaseUrl}/user/${email.value}`, {name:name.value,email:email.value})
+        const res = await axios.put(`${apiBaseUrl}/user/${email}`, {name:name,email:email})
         // setAuthToken(res.data.token)
         // localStorage.setItem('token', res.data.token)
     }

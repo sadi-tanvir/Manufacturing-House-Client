@@ -13,8 +13,13 @@ import MyOrders from './pages/Dashboard/MyOrders';
 import AddAReview from './pages/Dashboard/AddAReview';
 import MyProfile from './pages/Dashboard/MyProfile';
 import Reviews from './pages/Reviews/Reviews';
+import setAuthToken from './utils/setAuthToken';
+import ManageAllOrders from './pages/Dashboard/ManageAllOrders';
 
 const App = () => {
+  if(localStorage.getItem('token')){
+    setAuthToken(JSON.stringify(localStorage.getItem('token')))
+  }
   return (
     <>
       <Navbar />
@@ -33,6 +38,7 @@ const App = () => {
           <Route index element={<MyOrders />} />
           <Route path="addAreview" element={<AddAReview />} />
           <Route path="myProfile" element={<MyProfile />} />
+          <Route path="ManageAllOrders" element={<ManageAllOrders />} />
         </Route>
         <Route path="/login" element={
           <CheckAuth>

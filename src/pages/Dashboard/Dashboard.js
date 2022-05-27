@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import CustomLink from '../shared/CustomLink/CustomLink';
 
 const Dashboard = () => {
   return (
@@ -12,11 +13,12 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-          {/* <!-- Sidebar content here --> */}
-          <li><Link to="/dashboard">My Products</Link></li>
-          <li><Link to="/dashboard/addAreview">Add A Review</Link></li>
-          <li><Link to="/dashboard/myProfile">My Profile</Link></li>
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard'>My Products</CustomLink>
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/addAreview'>Add A Review</CustomLink>
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/myProfile'>My Profile</CustomLink>
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/ManageAllOrders'>Manage All Orders</CustomLink>
         </ul>
+        
 
       </div>
     </div>

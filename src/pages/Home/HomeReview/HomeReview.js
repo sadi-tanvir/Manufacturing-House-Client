@@ -17,7 +17,6 @@ const HomeReview = () => {
         getReviews()
     },[])
 
-    console.log(reviews);
     return (
         <div className="my-20">
             <h2 className="text-sky-600 text-4xl font-bold text-center my-5">What folks are saying about us?</h2>
