@@ -3,6 +3,7 @@ import PurchaseConfirmModal from './PurchaseConfirmModal';
 
 const ProductDetails = ({ product }) => {
     const { name, image, description, unit_price, Available_qty, minimum_order_qty } = product
+    const [modal, setModal] = useState(" ")
     return (
         <>
             <div class="w-full flex flex-col justify-center items-center my-20">
@@ -18,7 +19,7 @@ const ProductDetails = ({ product }) => {
                         <p className="text-lg font-semibold">Descripttion: {description}</p>
                         <div class="card-actions">
                             <label for="confirm-purchase" class="btn mx-auto w-full mt-2 bg-sky-700 border-none hover:bg-sky-800">Confirm Your Order</label>
-                            <PurchaseConfirmModal product={product} />
+                            {modal && <PurchaseConfirmModal setModal={setModal} product={product} />}
                         </div>
                     </div>
                 </div>

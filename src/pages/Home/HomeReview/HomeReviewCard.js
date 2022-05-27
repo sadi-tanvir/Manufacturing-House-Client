@@ -1,6 +1,8 @@
 import React from 'react';
 import avatar from "../../../assets/empty-avatar.jpg"
-const HomeReviewCard = ({name,reviewText}) => {
+import Rating from '../../shared/Rating/Rating';
+const HomeReviewCard = ({ review }) => {
+    const { name, rating, message } = review
     return (
         <div>
             <div class="card bg-base-100 shadow-xl flex flex-col justify-center items-center">
@@ -10,13 +12,9 @@ const HomeReviewCard = ({name,reviewText}) => {
                     </div>
                 </div>
                 <div class="card-body items-center text-center">
-                    <p className="">{reviewText}</p>
+                    <p className="">{message}</p>
                     <div className="flex justify-center items-center mt-2">
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <Rating rating={rating} />
                     </div>
                     <p className="font-semibold">{name}</p>
                 </div>

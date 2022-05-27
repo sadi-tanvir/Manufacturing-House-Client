@@ -18,7 +18,7 @@ const MyOrders = () => {
 
     // delete order
     const deleteOrder = async (id) => {
-        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!' }).then((result) => {
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, cancel it!' }).then((result) => {
             if (result.isConfirmed) {
                 const deleteData = async () => {
                     const res = await axios.delete(`${apiBaseUrl}/deleteOrder/${id}`)
@@ -33,7 +33,7 @@ const MyOrders = () => {
     // get my orders
     useEffect(() => {
         const getOrders = async () => {
-            const res = await axios(`${apiBaseUrl}/myOrders?email=${user?.email}`)
+            const res = await axios(`${apiBaseUrl}/myOrders/${user?.email}`)
             setOrders(res.data.orders);
         }
         getOrders()
@@ -68,7 +68,7 @@ const MyOrders = () => {
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div class="font-bold">{order?.productName.length > 20 ? order?.productName.slice(0, 20) : order?.productName}...</div>
+                                                        <div title={order?.productName} class="font-bold">{order?.productName.length > 20 ? order?.productName.slice(0, 20) : order?.productName}...</div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -81,7 +81,7 @@ const MyOrders = () => {
                                             </td>
                                             <th>
                                                 <button onClick={() => navigate(`/purchase/${order.productId}`)} class="btn btn-info btn-xs">details</button>
-                                                <button onClick={() => deleteOrder(order?._id)} class="btn btn-xs bg-red-600 ml-1 border-red-600 focus:border-red-600 text-white hover:bg-red-600">delete</button>
+                                                <button onClick={() => deleteOrder(order?._id)} class="btn btn-xs bg-red-600 ml-1 border-red-600 focus:border-red-600 text-white hover:bg-red-600">cancel</button>
                                             </th>
                                         </tr>
                                     </>

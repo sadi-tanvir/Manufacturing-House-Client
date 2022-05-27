@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrders from './pages/Dashboard/MyOrders';
 import AddAReview from './pages/Dashboard/AddAReview';
 import MyProfile from './pages/Dashboard/MyProfile';
+import Reviews from './pages/Reviews/Reviews';
 
 const App = () => {
   return (

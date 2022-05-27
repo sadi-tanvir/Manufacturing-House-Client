@@ -28,7 +28,7 @@ const Navbar = () => {
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Review</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 </ul>
                             </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Review</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 {
                                     user ? <>

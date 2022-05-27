@@ -8,7 +8,7 @@ import { apiBaseUrl } from '../../utils/apiBaseUrl';
 
 
 
-const PurchaseConfirmModal = ({ product }) => {
+const PurchaseConfirmModal = ({ product,setModal }) => {
     const { _id, name, image, Available_qty,unit_price, minimum_order_qty } = product
     // firebase
     const [user, loading, error] = useAuthState(auth);
@@ -47,8 +47,8 @@ const PurchaseConfirmModal = ({ product }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            checkOrderQuantity()
-            await axios.post(`${apiBaseUrl}/order`, {
+           await checkOrderQuantity()
+           axios.post(`${apiBaseUrl}/order`, {
                 productId: _id,
                 productName: name,
                 productImage: image,
@@ -58,6 +58,13 @@ const PurchaseConfirmModal = ({ product }) => {
                 userPhone: info.userPhone,
                 userAddress: info.userAddress,
                 orderQuantity: info.orderQuantity,
+            }).then(res => {
+                console.log(res);
+                if(res.data.success === true){
+                    setModal(null)
+                }else{
+                    setModal(" ")
+                }
             })
         } catch (error) {
             console.log(error);
@@ -85,7 +92,7 @@ const PurchaseConfirmModal = ({ product }) => {
                             <input onChange={handleChange} required name="orderQuantity" placeholder="Product quantity" type="text" value={info.orderQuantity} className="input input-bordered input-md w-full" />
                             {checkQty.min && <small className="mr-auto text-red-500">you can't order less than {minimum_order_qty}pcs</small>}
                             {checkQty.max && <small className="mr-auto text-red-500">you can't order more than {Available_qty}pcs</small>}
-                            <button className="btn btn-primary text-white font-bold bg-gradient-to-r from-info to-info border-0 rounded-lg w-full">Get Started</button>
+                            <button className="btn btn-primary text-white font-bold bg-gradient-to-r from-info to-info border-0 rounded-lg w-full">place order</button>
                         </form>
                     </div>
                     <div className="modal-action">
