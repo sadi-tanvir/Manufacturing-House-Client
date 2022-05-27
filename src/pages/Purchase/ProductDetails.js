@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PurchaseConfirmModal from './PurchaseConfirmModal';
 
 const ProductDetails = ({ product }) => {
-    console.log(product);
     const { name, image, description, unit_price, Available_qty, minimum_order_qty } = product
     return (
         <>
@@ -18,8 +17,7 @@ const ProductDetails = ({ product }) => {
                         <p className="text-lg font-semibold">Minimum Order: {minimum_order_qty} pcs</p>
                         <p className="text-lg font-semibold">Descripttion: {description}</p>
                         <div class="card-actions">
-                            <button >Confirm Your Order</button>
-                            <label for="confirm-purchase" class="btn mx-auto w-full mt-2 bg-sky-700 border-none hover:bg-sky-800">open modal</label>
+                            <label for="confirm-purchase" class="btn mx-auto w-full mt-2 bg-sky-700 border-none hover:bg-sky-800">Confirm Your Order</label>
                             <PurchaseConfirmModal product={product} />
                         </div>
                     </div>

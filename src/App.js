@@ -8,6 +8,10 @@ import Login from './pages/Login-User/Login/Login';
 import Register from './pages/Login-User/Register/Register';
 import RequireAuth from './pages/Login-User/RequireAuth/RequireAuth';
 import CheckAuth from "./pages/Login-User/RequireAuth/CheckAuth"
+import Dashboard from './pages/Dashboard/Dashboard';
+import MyOrders from './pages/Dashboard/MyOrders';
+import AddAReview from './pages/Dashboard/AddAReview';
+import MyProfile from './pages/Dashboard/MyProfile';
 
 const App = () => {
   return (
@@ -20,6 +24,15 @@ const App = () => {
             <Purchase />
           </RequireAuth>
         } />
+        <Route path="/dashboard" element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }>
+          <Route index element={<MyOrders />} />
+          <Route path="addAreview" element={<AddAReview />} />
+          <Route path="myProfile" element={<MyProfile />} />
+        </Route>
         <Route path="/login" element={
           <CheckAuth>
             <Login />

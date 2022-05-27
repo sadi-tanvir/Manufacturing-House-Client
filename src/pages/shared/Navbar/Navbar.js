@@ -25,12 +25,11 @@ const Navbar = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                                 </label>
                                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/dashboard'>Dashboard</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/purchase'>Purchase</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/reviews'>Reviews</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/contact-us'>Contact</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2 block" to='/login'>Login</CustomLink>
-                                    <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/register'>Register</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Review</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 </ul>
                             </div>
                         </div>
@@ -70,9 +69,10 @@ const Navbar = () => {
                         <div className="hidden md:block">
                             <div class="flex justify-end items-center mt-5 md:ml-32">
                                 <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Purchase</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Contact</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Review</CustomLink>
+                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 {
                                     user ? <>
                                         <button onClick={() => signOut(auth)} className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>
