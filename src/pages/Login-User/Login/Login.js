@@ -4,16 +4,19 @@ import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hook
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { apiBaseUrl } from '../../../utils/apiBaseUrl';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 
 const Login = () => {
     const [authUser] = useAuthState(auth);
+    const [isClose, setClose] = useState(true)
     const [info, setInfo] = useState({
         email: '',
         password: ''
     })
+    
 
     // router
     const [
@@ -45,13 +48,13 @@ const Login = () => {
         }
 
         const sendUserToDB = async () => {
-            const res = await axios.put(`${apiBaseUrl}/user/${info.email}`, {email:info.email, name:authUser?.displayName})
+            const res = await axios.put(`${apiBaseUrl}/user/${info.email}`, { email: info.email, name: authUser?.displayName })
             // console.log(`manualLogin`,res);
             // setAuthToken(res.data.token)
             // localStorage.setItem('token', JSON.stringify(res.data.token))
         }
         sendUserToDB()
-    }, [user,authUser])
+    }, [user, authUser])
 
     return (
         <div className="h-screen flex justify-center items-center">
@@ -64,10 +67,15 @@ const Login = () => {
                         <button type="submit" className="btn btn-accent text-white font-bold bg-gradient-to-r from-sky-500 to-sky-600 border-0 rounded-xl w-full">Login</button>
                     </form>
                     <div className="flex flex-col w-full border-opacity-50">
-                        <div className="">
-                            <p className=" text-sm text-center">
+                        <div className="flex justify-between items-center">
+                            <p className="text-sm ml-1">
                                 New to here?
-                                <span onClick={() => navigate('/register')} className="text-red-400 cursor-pointer ml-1">Create new account</span>
+                                <span onClick={() => navigate('/register')} className="text-red-400 cursor-pointer ml-1">Register</span>
+                            </p>
+                            <p className="text-sm ml-10">
+                                {/* <span onClick={() => navigate('/register')} className="text-red-600 cursor-pointer ml-1"></span> */}
+                                <label for='forgot-password' className="text-red-600 cursor-pointer ml-1">Lost Password?</label>
+                                {isClose && <ForgotPassword setClose={setClose} />}
                             </p>
                         </div>
                         <div className="divider">OR</div>
