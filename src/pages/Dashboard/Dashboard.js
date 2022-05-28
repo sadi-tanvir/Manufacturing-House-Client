@@ -13,22 +13,25 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard'>
-            My Products
+          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-8" to='/dashboard'>
+            My Orders
           </CustomLink>
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/addAreview'>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/addAreview'>
             Add A Review
           </CustomLink>
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/myProfile'>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/myProfile'>
             My Profile
           </CustomLink>
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/manageAllUsers'>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/manageAllUsers'>
             Mange All Users
           </CustomLink>
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/ManageAllOrders'>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/ManageAllOrders'>
             Manage All Orders
           </CustomLink>
-          <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-5" to='/dashboard/addProduct'>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/manageProducts'>
+            Manage Products
+          </CustomLink>
+          <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/addProduct'>
             Add Product
           </CustomLink>
         </ul>

@@ -7,7 +7,7 @@ import SummaryCard from './SummaryCard';
 
 const HomeBusinessSummary = () => {
     return (
-        <div className="w-full">
+        <div className="w-full mt-32">
             <h1 className="capitalize text-4xl text-center text-sky-600 font-bold">our business summary</h1>
             <p className="text-lg font-semibold text-center">try to look up the client's expectation</p>
             <div className="w-full grid grid-cols-2 md:grid-cols-4">

@@ -56,12 +56,12 @@ const ManageAllUsers = () => {
                 <div class="overflow-x-auto w-full">
                     <table class="table w-full">
                         {/* <!-- head --> */}
-                        <thead>
+                        <thead className="text-white">
                             <tr>
-                                <th>Name & Email</th>
-                                <th>Phone</th>
-                                <th>Role</th>
-                                <th></th>
+                                <th class="bg-sky-600">Name & Email</th>
+                                <th class="bg-sky-600">Phone</th>
+                                <th class="bg-sky-600">Role</th>
+                                <th class="bg-sky-600"></th>
                             </tr>
                         </thead>
                         <tbody>

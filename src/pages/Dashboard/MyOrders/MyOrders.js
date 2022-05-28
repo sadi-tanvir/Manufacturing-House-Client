@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import auth from '../../firebase.init';
-import { apiBaseUrl } from '../../utils/apiBaseUrl';
+import auth from '../../../firebase.init';
+import { apiBaseUrl } from '../../../utils/apiBaseUrl';
 import Swal from "sweetalert2"
 
 const MyOrders = () => {
@@ -44,14 +44,14 @@ const MyOrders = () => {
             <div class="overflow-x-auto w-full">
                 <table class="table w-full">
                     {/* <!-- head --> */}
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Unit Price</th>
-                            <th>Order Quantity</th>
-                            <th>Total Tk</th>
-                            <th>payment status</th>
-                            <th></th>
+                    <thead class="">
+                        <tr class="text-white">
+                            <th class="bg-sky-600">Name</th>
+                            <th class="bg-sky-600">Unit Price</th>
+                            <th class="bg-sky-600">Order Quantity</th>
+                            <th class="bg-sky-600">Total Tk</th>
+                            <th class="bg-sky-600">payment status</th>
+                            <th class="bg-sky-600"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,12 +76,26 @@ const MyOrders = () => {
                                             <td>{order?.orderQuantity}pcs</td>
                                             <td>${order?.unit_price * order?.orderQuantity}</td>
                                             <td>
-                                                <span class="badge badge-ghost  px-3 bg-red-600 font-semibold text-white">unpaid</span>
-                                                {/* <span class="badge badge-ghost bg-sky-600 px-3 font-semibold text-white">paid</span> */}
+                                                {
+                                                    order?.payment_status ?
+                                                    <span class="bg-green-600 px-5 py-1 rounded-2xl font-semibold text-white">
+                                                            Paid
+                                                        </span>
+                                                        :
+                                                        <span class="px-5 py-1 rounded-2xl bg-red-600 font-semibold text-white">
+                                                            Unpaid
+                                                        </span>
+                                                }
                                             </td>
                                             <th>
-                                                <button onClick={() => navigate(`/purchase/${order.productId}`)} class="btn btn-info btn-xs">details</button>
-                                                <button onClick={() => deleteOrder(order?._id)} class="btn btn-xs bg-red-600 ml-1 border-red-600 focus:border-red-600 text-white hover:bg-red-600">cancel</button>
+                                                <div className="flex justify-center items-center">
+                                                    {!order?.payment_status && <button onClick={() => navigate(`/payment/${order._id}`)} class="btn bg-green-600 hover:bg-green-700 border-0 text-white btn-xs mr-2">Make Payment</button>}
+                                                    
+                                                    <div className="flex flex-col justify-center items-center">
+                                                        {!order?.payment_status && <button onClick={() => deleteOrder(order?._id)} class="btn btn-xs bg-red-600 border-red-600 focus:border-red-600 text-white hover:bg-red-600">cancel</button>}
+                                                        <button onClick={() => navigate(`/purchase/${order.productId}`)} class="btn btn-info btn-xs mt-1">details</button>
+                                                    </div>
+                                                </div>
                                             </th>
                                         </tr>
                                     </>

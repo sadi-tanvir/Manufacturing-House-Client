@@ -45,7 +45,7 @@ const MyProfile = () => {
     }, [])
     return (
         <div>
-            <div className=" my-20 flex justify-center items-center">
+            <div className=" my-20 flex justify-center items-center md:-mt-8">
                 <div className="card w-10/12 md:w-6/12 bg-base-100 shadow-xl py-5">
                     <div className="card-body">
                         <h1 className="text-sky-600 font-bold text-3xl text-center mb-5">My Profile</h1>

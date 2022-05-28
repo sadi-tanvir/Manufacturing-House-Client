@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([])
-    const [isDelete, setDelete] = useState({})
+    const [isChange, setIsChange] = useState({})
 
     // router
     const navigate = useNavigate()
@@ -25,9 +25,65 @@ const ManageAllOrders = () => {
             if (result.isConfirmed) {
                 const deleteData = async () => {
                     const res = await axios.delete(`${apiBaseUrl}/deleteOrder/${id}`)
-                    setDelete(res)
+                    setIsChange(res)
                 }
                 deleteData()
+            }
+
+        })
+    }
+
+    // handle make paid
+    const handleMakePaid = (id) => {
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, make paid it!' }).then((result) => {
+            if (result.isConfirmed) {
+                const updateData = async () => {
+                    const res = await axios.patch(`${apiBaseUrl}/paidProduct/${id}`)
+                    setIsChange(res)
+                }
+                updateData()
+            }
+
+        })
+    }
+
+    // handle make paid
+    const handleMakeUnpaid = (id) => {
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, make Unpaid it!' }).then((result) => {
+            if (result.isConfirmed) {
+                const updateData = async () => {
+                    const res = await axios.patch(`${apiBaseUrl}/unpaidProduct/${id}`)
+                    setIsChange(res)
+                }
+                updateData()
+            }
+
+        })
+    }
+
+    // handle make shipped product
+    const handleMakeSipped = (id) => {
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, make Shipped it!' }).then((result) => {
+            if (result.isConfirmed) {
+                const updateData = async () => {
+                    const res = await axios.patch(`${apiBaseUrl}/shippedProduct/${id}`)
+                    setIsChange(res)
+                }
+                updateData()
+            }
+
+        })
+    }
+
+    // handle make pending product
+    const handleMakePending = (id) => {
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, make Shipped it!' }).then((result) => {
+            if (result.isConfirmed) {
+                const updateData = async () => {
+                    const res = await axios.patch(`${apiBaseUrl}/pendingProduct/${id}`)
+                    setIsChange(res)
+                }
+                updateData()
             }
 
         })
@@ -41,7 +97,7 @@ const ManageAllOrders = () => {
             setOrders(res.data.orders)
         }
         getAllOrders()
-    }, [isDelete])
+    }, [isChange])
     return (
         <div className="">
             <div>
@@ -49,13 +105,13 @@ const ManageAllOrders = () => {
                     <table class="table w-full">
                         {/* <!-- head --> */}
                         <thead>
-                            <tr>
-                                <th>Buyer</th>
-                                <th>Product</th>
-                                <th>Price & Qty</th>
-                                <th>Total Tk</th>
-                                <th>payment status</th>
-                                <th></th>
+                            <tr className="text-white">
+                                <th class="bg-sky-600">Buyer</th>
+                                <th class="bg-sky-600">Product</th>
+                                <th class="bg-sky-600">Price & Qty</th>
+                                <th class="bg-sky-600">Total Tk</th>
+                                <th class="bg-sky-600">current status</th>
+                                <th class="bg-sky-600"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,12 +142,53 @@ const ManageAllOrders = () => {
                                                 </td>
                                                 <td>${order.unit_price * order.orderQuantity}</td>
                                                 <td>
-                                                    <span class="badge badge-ghost  px-3 bg-red-600 font-semibold text-white">unpaid</span>
-                                                    {/* <span class="badge badge-ghost bg-sky-600 px-3 font-semibold text-white">paid</span> */}
+                                                    <div className="flex flex-col justify-center items-center">
+                                                        {
+                                                            order?.payment_status ?
+                                                                <span class=" rounded-2xl shadow-xl py-1  px-5 bg-green-600 font-semibold text-white text-sm">
+                                                                    paid
+                                                                </span> :
+                                                                <span class=" rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm">
+                                                                    Unpaid
+                                                                </span>
+                                                        }
+                                                        {
+                                                            order?.shipped ?
+                                                                <span class=" rounded-2xl shadow-xl py-1 ml-1 bg-cyan-600 px-3 font-semibold text-white text-sm mt-1">
+                                                                    shipped
+                                                                </span> :
+                                                                <span class=" rounded-2xl shadow-xl py-1 ml-1 bg-pink-500 px-3 font-semibold text-white text-sm mt-1">
+                                                                    Pending
+                                                                </span>
+                                                        }
+
+                                                    </div>
                                                 </td>
                                                 <th className="flex flex-col justify-center items-center">
-                                                    <button onClick={() => deleteOrder(order?._id)} class="btn btn-xs bg-red-600 ml-1 border-red-600 focus:border-red-600 text-white hover:bg-red-600">cancel</button>
-                                                    <button onClick={() => navigate(`/purchase/${order.productId}`)} class="btn btn-info btn-xs mt-1">details</button>
+                                                    {order?.payment_status || <button onClick={() => deleteOrder(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm">delete</button>}
+                                                    
+                                                    {
+                                                        order?.shipped ?
+                                                            <button onClick={() => handleMakePending(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-pink-600 font-semibold text-white text-sm mt-1">
+                                                                make pending
+                                                            </button> :
+                                                            <button onClick={() => handleMakeSipped(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-sky-600 font-semibold text-white text-sm mt-1">
+                                                                make Shipped
+                                                            </button>
+
+                                                    }
+
+                                                    {
+                                                        order?.payment_status ?
+                                                            <button onClick={() => handleMakeUnpaid(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm mt-1">
+                                                                make unpaid
+                                                            </button> :
+                                                            <button onClick={() => handleMakePaid(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-green-600 font-semibold text-white text-sm mt-1">
+                                                                make paid
+                                                            </button>
+                                                    }
+
+                                                    {/* <button onClick={() => navigate(`/purchase/${order.productId}`)} class="rounded-2xl shadow-xl py-1  px-3 bg-sky-600 font-semibold text-white text-sm mt-1">make undone</button> */}
                                                 </th>
                                             </tr>
                                         </>
@@ -112,7 +209,7 @@ const ManageAllOrders = () => {
                                 <th>Order Qty: {totalOrderQty}pcs</th>
                                 <th>Total Cost ${totalOrderCost}</th>
                                 <th></th>
-                                <th></th>
+                                {/* <th></th> */}
                             </tr>
                         </tfoot>
 

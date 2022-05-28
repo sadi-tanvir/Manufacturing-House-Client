@@ -9,19 +9,19 @@ import Register from './pages/Login-User/Register/Register';
 import RequireAuth from './pages/Login-User/RequireAuth/RequireAuth';
 import CheckAuth from "./pages/Login-User/RequireAuth/CheckAuth"
 import Dashboard from './pages/Dashboard/Dashboard';
-import MyOrders from './pages/Dashboard/MyOrders';
+import MyOrders from './pages/Dashboard/MyOrders/MyOrders';
 import AddAReview from './pages/Dashboard/AddAReview';
 import MyProfile from './pages/Dashboard/MyProfile';
-import Reviews from './pages/Reviews/Reviews';
-import setAuthToken from './utils/setAuthToken';
 import ManageAllOrders from './pages/Dashboard/ManageAllOrders';
 import AddProduct from './pages/Dashboard/AddProduct';
 import ManageAllUsers from './pages/Dashboard/ManageAllUsers';
+import ManageProducts from './pages/Dashboard/MangeProducts/ManageProducts';
+import Error404 from './pages/Error/Error404';
+import Payment from './pages/Dashboard/MyOrders/Payment/Payment';
+// import Payment from './pages/Payment/Payment';
 
 const App = () => {
-  if(localStorage.getItem('token')){
-    setAuthToken(JSON.stringify(localStorage.getItem('token')))
-  }
+  
   return (
     <>
       <Navbar />
@@ -32,6 +32,7 @@ const App = () => {
             <Purchase />
           </RequireAuth>
         } />
+
         <Route path="/dashboard" element={
           <RequireAuth>
             <Dashboard />
@@ -43,17 +44,27 @@ const App = () => {
           <Route path="ManageAllOrders" element={<ManageAllOrders />} />
           <Route path="addProduct" element={<AddProduct />} />
           <Route path="manageAllUsers" element={<ManageAllUsers />} />
+          <Route path="manageProducts" element={<ManageProducts />} />
         </Route>
+        <Route path="/payment/:productId" element={
+          <RequireAuth>
+            <Payment />
+          </RequireAuth>
+        } />
+
         <Route path="/login" element={
           <CheckAuth>
             <Login />
           </CheckAuth>
         } />
+
         <Route path="/register" element={
           <CheckAuth>
             <Register />
           </CheckAuth>
         } />
+
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </>

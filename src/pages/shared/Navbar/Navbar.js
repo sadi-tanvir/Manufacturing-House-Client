@@ -76,11 +76,11 @@ const Navbar = () => {
                         {/* medium size */}
                         <div className="hidden md:block">
                             <div class="flex justify-end items-center mt-5 md:ml-32">
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/reviews'>Reviews</CustomLink>
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
+                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/'>Home</CustomLink>
+                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/dashboard'>Dashboard</CustomLink>
+                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/purchase'>Orders</CustomLink>
+                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/payment'>Payment</CustomLink>
+                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2" to='/contact-us'>Profile</CustomLink>
                                 {
                                     user ? <>
                                         <button onClick={handleSignOut} className="bg-slate-700 text-white px-3 py-2 rounded ml-3 font-bold">Logout</button>

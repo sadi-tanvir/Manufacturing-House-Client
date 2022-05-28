@@ -58,6 +58,7 @@ const PurchaseConfirmModal = ({ product,setModal }) => {
                 userPhone: info.userPhone,
                 userAddress: info.userAddress,
                 orderQuantity: info.orderQuantity,
+                totalAmount: info.orderQuantity * unit_price
             }).then(res => {
                 console.log(res);
                 if(res.data.success === true){

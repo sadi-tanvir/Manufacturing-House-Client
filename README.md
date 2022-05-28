@@ -1,12 +1,11 @@
-## FRUITS-WAREHOUSE-MANAGEMENT
-## website link [GO](https://fruits-warehouse-managem-708ba.web.app/)
+## SADI-TECH-HOUSE
+## website link [GO](http://localhost:3000/)
 
 
 
-## Features of project
+## Features of The project
 ### 1- you can log in with email and password 
-### 2- and you can also sign in with google and git hub
-### 2- if you forgot your password you could recover it very easily.
+### 2- and you can also sign in with google popup
+<!-- ### 2- if you forgot your password you could recover it very easily. -->
 ### 2- Nested route is include in this project
 ### 5- router authentication included for protected routes.
-### 6- jwt authentication included
