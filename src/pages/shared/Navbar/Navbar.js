@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import setAuthToken from '../../../utils/setAuthToken';
 import { useDispatch, useSelector } from "react-redux"
 import { FALSE_ADMIN } from "../../../redux/actions/types"
+import logo from "../../../assets/icon/logo.png"
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -29,7 +30,7 @@ const Navbar = () => {
                         <div class="navbar-start">
                             {/* medium size */}
                             <div className="hidden md:block">
-                                <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2" to='/'>Home</CustomLink>
+                                <img className="w-24 ml-10" src={logo} alt="" />
                             </div>
 
                             {/* small size */}
@@ -49,8 +50,8 @@ const Navbar = () => {
                                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/myOrders'>Dashboard</CustomLink>
                                                     </>
                                             }
-                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/blog'>Blog</CustomLink>
-                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/Protfolio'>Protfolio</CustomLink>
+                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/blogs'>Blog</CustomLink>
+                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/portfolio'>Protfolio</CustomLink>
                                             <li className="">
                                                 <button onClick={handleSignOut} className="bg-slate-700 text-white px-4 ml-1 py-2 rounded font-bold mt-2">Logout</button>
                                             </li>
@@ -68,7 +69,7 @@ const Navbar = () => {
                         {/* middle point */}
                         {/* small size */}
                         <div class="navbar-center ml-[-30px] md:hidden">
-                            <CustomLink className="no-underline font-semibold md:font-bold rounded-lg text-sm px-3 py-2" to='/'>Home</CustomLink>
+                        <img className="w-24 mt-2" src={logo} alt="" />
                         </div>
 
 
