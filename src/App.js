@@ -18,10 +18,21 @@ import ManageAllUsers from './pages/Dashboard/ManageAllUsers';
 import ManageProducts from './pages/Dashboard/MangeProducts/ManageProducts';
 import Error404 from './pages/Error/Error404';
 import Payment from './pages/Dashboard/MyOrders/Payment/Payment';
-// import Payment from './pages/Payment/Payment';
+import { useDispatch } from "react-redux"
+import { SET_ADMIN } from "./redux/actions/types"
+import AdminAuth from './pages/Login-User/RequireAuth/AdminAuth';
+import UserAuth from "./pages/Login-User/RequireAuth/UserAuth"
+import Portfolio from './pages/Portfolio/Portfolio';
 
 const App = () => {
-  
+  // redux
+  const dispatch = useDispatch()
+
+  const checkUser = JSON.parse(localStorage.getItem('userRole'))
+  if (checkUser === 'admin') {
+    dispatch({ type: SET_ADMIN })
+  }
+
   return (
     <>
       <Navbar />
@@ -33,22 +44,51 @@ const App = () => {
           </RequireAuth>
         } />
 
+        {/* dashboard board start */}
         <Route path="/dashboard" element={
           <RequireAuth>
             <Dashboard />
           </RequireAuth>
         }>
-          <Route index element={<MyOrders />} />
-          <Route path="addAreview" element={<AddAReview />} />
+          <Route path='manageAllOrders' element={
+            <AdminAuth>
+              <ManageAllOrders />
+            </AdminAuth>
+          } />
+          <Route path="myOrders" element={<MyOrders />} />
+          <Route path="addAreview" element={
+            <UserAuth>
+              <AddAReview />
+            </UserAuth>
+          } />
           <Route path="myProfile" element={<MyProfile />} />
-          <Route path="ManageAllOrders" element={<ManageAllOrders />} />
-          <Route path="addProduct" element={<AddProduct />} />
-          <Route path="manageAllUsers" element={<ManageAllUsers />} />
-          <Route path="manageProducts" element={<ManageProducts />} />
+
+          <Route path="addProduct" element={
+            <AdminAuth>
+              <AddProduct />
+            </AdminAuth>
+          } />
+          <Route path="manageAllUsers" element={
+            <AdminAuth>
+              <ManageAllUsers />
+            </AdminAuth>
+          } />
+          <Route path="manageProducts" element={
+            <AdminAuth>
+              <ManageProducts />
+            </AdminAuth>
+          } />
         </Route>
+        {/* dashboard board end */}
+
         <Route path="/payment/:productId" element={
           <RequireAuth>
             <Payment />
+          </RequireAuth>
+        } />
+        <Route path="/portfolio" element={
+          <RequireAuth>
+            <Portfolio />
           </RequireAuth>
         } />
 

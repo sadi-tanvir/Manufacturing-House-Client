@@ -100,7 +100,8 @@ const ManageAllOrders = () => {
     }, [isChange])
     return (
         <div className="">
-            <div>
+            <div className="mx-5 md:mx-0">
+                <h1 className="text-2xl md:text-4xl text-slate-600 font-bold text-center mb-5 uppercase md:mb-8 mt-2">Manage All Orders</h1>
                 <div class="overflow-x-auto w-full">
                     <table class="table w-full">
                         {/* <!-- head --> */}
@@ -128,51 +129,59 @@ const ManageAllOrders = () => {
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <div title={order.userName} class="font-bold">{order?.userName.length > 10 ? order?.userName.slice(0, 10) : order?.userName}...</div>
+                                                            <div title={order.userName} class="font-bold text-slate-700">{order?.userName.length > 10 ? order?.userName.slice(0, 10) : order?.userName}...</div>
                                                             <div title={order?.userEmail} class="font-semibold">{order?.userEmail.length > 10 ? order?.userEmail.slice(0, 10) : order?.userEmail}...</div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td title={order?.productName}>{order?.productName.length > 15 ? order?.productName.slice(0, 15) : order?.productName}...</td>
+                                                <td className="font-semibold text-slate-600" title={order?.productName}>{order?.productName.length > 15 ? order?.productName.slice(0, 15) : order?.productName}...</td>
                                                 <td>
-                                                    <div>
-                                                        <div>{order.orderQuantity}pcs</div>
-                                                        <div>${order.unit_price}</div>
+                                                    <div className="flex flex-col justify-center items-center">
+                                                        <span class="bg-slate-500 text-sm px-10 py-1 inline-block rounded-2xl font-semibold text-white">
+                                                            ${order.unit_price}
+                                                        </span>
+                                                        <span class="bg-slate-500 text-sm px-7 mt-1 py-1 inline-block rounded-2xl font-semibold text-white">
+                                                            {order.orderQuantity} pcs
+                                                        </span>
                                                     </div>
                                                 </td>
-                                                <td>${order.unit_price * order.orderQuantity}</td>
+                                                <td>
+                                                    <span class="bg-slate-500 text-sm px-7 py-1 inline-block rounded-2xl font-semibold text-white">
+                                                        ${order?.totalAmount}
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <div className="flex flex-col justify-center items-center">
                                                         {
                                                             order?.payment_status ?
-                                                                <span class=" rounded-2xl shadow-xl py-1  px-5 bg-green-600 font-semibold text-white text-sm">
+                                                                <span class="bg-green-600 text-sm px-8 py-1 inline-block rounded-2xl font-semibold text-white">
                                                                     paid
                                                                 </span> :
-                                                                <span class=" rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm">
-                                                                    Unpaid
+                                                                <span class="bg-red-600 text-sm px-6 py-1 inline-block rounded-2xl font-semibold text-white">
+                                                                    unpaid
                                                                 </span>
                                                         }
                                                         {
                                                             order?.shipped ?
-                                                                <span class=" rounded-2xl shadow-xl py-1 ml-1 bg-cyan-600 px-3 font-semibold text-white text-sm mt-1">
+                                                                <span class="bg-cyan-600 text-sm px-5 mt-1 py-1 inline-block rounded-2xl font-semibold text-white">
                                                                     shipped
                                                                 </span> :
-                                                                <span class=" rounded-2xl shadow-xl py-1 ml-1 bg-pink-500 px-3 font-semibold text-white text-sm mt-1">
-                                                                    Pending
+                                                                <span class="bg-pink-500 text-sm px-5 mt-1 py-1 inline-block rounded-2xl font-semibold text-white">
+                                                                    pending
                                                                 </span>
                                                         }
 
                                                     </div>
                                                 </td>
                                                 <th className="flex flex-col justify-center items-center">
-                                                    {order?.payment_status || <button onClick={() => deleteOrder(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm">delete</button>}
-                                                    
+                                                    {order?.payment_status || <button onClick={() => deleteOrder(order?._id)} className="shadow-xl text-sm mt-1 py-1 px-10 rounded-md text-white font-bold bg-red-600">delete</button>}
+
                                                     {
                                                         order?.shipped ?
-                                                            <button onClick={() => handleMakePending(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-pink-600 font-semibold text-white text-sm mt-1">
+                                                            <button onClick={() => handleMakePending(order?._id)} className="shadow-xl text-sm mt-1 py-1 px-3 rounded-md text-white font-bold bg-pink-600">
                                                                 make pending
                                                             </button> :
-                                                            <button onClick={() => handleMakeSipped(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-sky-600 font-semibold text-white text-sm mt-1">
+                                                            <button onClick={() => handleMakeSipped(order?._id)} className="shadow-xl text-sm mt-1 py-1 px-3 rounded-md text-white font-bold bg-sky-600">
                                                                 make Shipped
                                                             </button>
 
@@ -180,10 +189,10 @@ const ManageAllOrders = () => {
 
                                                     {
                                                         order?.payment_status ?
-                                                            <button onClick={() => handleMakeUnpaid(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-red-600 font-semibold text-white text-sm mt-1">
+                                                            <button onClick={() => handleMakeUnpaid(order?._id)} className="shadow-xl text-sm mt-1 py-1 px-4 rounded-md text-white font-bold bg-red-600">
                                                                 make unpaid
                                                             </button> :
-                                                            <button onClick={() => handleMakePaid(order?._id)} class="rounded-2xl shadow-xl py-1  px-3 bg-green-600 font-semibold text-white text-sm mt-1">
+                                                            <button onClick={() => handleMakePaid(order?._id)} className="shadow-xl text-sm mt-1 py-1 px-6 rounded-md text-white font-bold bg-green-500">
                                                                 make paid
                                                             </button>
                                                     }
@@ -196,23 +205,6 @@ const ManageAllOrders = () => {
                                 })
                             }
                         </tbody>
-
-
-
-
-                        {/* <!-- foot --> */}
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th>Total Item: {orders.length}</th>
-                                <th>Order Qty: {totalOrderQty}pcs</th>
-                                <th>Total Cost ${totalOrderCost}</th>
-                                <th></th>
-                                {/* <th></th> */}
-                            </tr>
-                        </tfoot>
-
                     </table>
                 </div>
             </div>

@@ -1,8 +1,8 @@
 import {combineReducers} from "redux"
-import globalReducer from './global'
+import adminReducer from './adminReducer'
 
 const rootReducer = combineReducers({
-    globalReducer
+    adminReducer
 })
 
 

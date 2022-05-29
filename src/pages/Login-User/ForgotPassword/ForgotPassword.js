@@ -9,13 +9,9 @@ const ForgotPassword = ({ setClose }) => {
 
     const handleReset = async (e) => {
         e.preventDefault()
-        console.log(email);
         await sendPasswordResetEmail(email);
-
         setClose(false)
     }
-
-    setClose(true)
 
 
     return (

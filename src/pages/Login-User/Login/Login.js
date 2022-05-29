@@ -6,6 +6,8 @@ import auth from '../../../firebase.init';
 import { apiBaseUrl } from '../../../utils/apiBaseUrl';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { useDispatch } from "react-redux"
+import { SET_ADMIN } from "../../../redux/actions/types"
 
 
 
@@ -16,7 +18,9 @@ const Login = () => {
         email: '',
         password: ''
     })
-    
+
+    // redux
+    const dispatch = useDispatch()
 
     // router
     const [
@@ -36,10 +40,15 @@ const Login = () => {
         setInfo({ ...info, [name]: value })
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
         const { email, password } = info;
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password)
+        const res = await axios(`${apiBaseUrl}/user/${email}`)
+        localStorage.setItem('userRole', JSON.stringify(res.data.role))
+        if(res.data.role === 'admin'){
+            dispatch({ type: SET_ADMIN })
+        }
     }
 
     useEffect(() => {

@@ -44,7 +44,7 @@ const AddAReview = () => {
                         <h1 className="text-sky-600 font-bold text-3xl text-center mb-5">Add A Review</h1>
                         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5" action="">
                             <input onChange={handleChange} name="rating" type="number" value={review.rating} placeholder="rating maximum 5" className="input input-bordered w-full" />
-                            <textarea onChange={handleChange} name="message" class="textarea textarea-bordered" value={review.message} placeholder="type your experience with us" id="" cols="10" rows="10"></textarea>
+                            <textarea onChange={handleChange} name="message" class="textarea textarea-bordered" value={review.message} placeholder="type your experience with us" id="" cols="10" rows="5"></textarea>
                             <button type="submit" className="btn btn-accent text-white font-bold bg-gradient-to-r from-sky-500 to-sky-600 border-0 rounded-xl w-full">Submit</button>
                         </form>
                     </div>

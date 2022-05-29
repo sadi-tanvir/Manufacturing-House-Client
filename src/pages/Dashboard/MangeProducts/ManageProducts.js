@@ -34,7 +34,7 @@ const ManageProducts = () => {
     return (
         <>
             <div className="w-full flex flex-col justify-center items-center">
-                <h1 className="text-sky-600 text-5xl font-bold my-5">Manage Products</h1>
+                <h1 className="text-slate-600 uppercase text-3xl md:text-4xl font-bold my-5">Manage Products</h1>
                 <div className="w-11/12 grid grid-cols-1 md:grid-cols-2 gap-5">
                     {
                         products.map(product => <ProductCard key={products._id} product={product} deleteProduct={deleteProduct}/>)

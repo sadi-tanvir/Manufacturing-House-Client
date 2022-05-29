@@ -13,7 +13,6 @@ const ManageAllUsers = () => {
     // router
     const navigate = useNavigate()
 
-    console.log(users);
 
 
     // delete order
@@ -51,8 +50,8 @@ const ManageAllUsers = () => {
         getAllUsers()
     }, [isChange])
     return (
-        <div className="">
-            <div>
+        <div className=""><div className="mx-5 md:mx-0">
+        <h1 className="text-2xl md:text-4xl text-slate-600 font-bold text-center mb-5 uppercase md:mb-8 mt-2">Manage All Users</h1>
                 <div class="overflow-x-auto w-full">
                     <table class="table w-full">
                         {/* <!-- head --> */}
@@ -79,22 +78,24 @@ const ManageAllUsers = () => {
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    {user.phone}
+                                                    {user.phone && <span class="bg-slate-500 px-5 py-1 text-sm inline-block rounded-2xl font-semibold text-white">{user.phone}</span>}
                                                 </td>
                                                 <td>
-                                                    <span class={`px-4 py-[3px] rounded-full  ${user.role === 'admin' ? 'bg-green-600' : 'bg-cyan-600'} font-bold text-white`}>{user.role}</span>
-                                                    {/* <span class="badge badge-ghost bg-sky-600 px-3 font-semibold text-white">paid</span> */}
+                                                    {/* <span class={`px-4 py-[3px] rounded-full  font-bold text-white`}></span> */}
+                                                    <span class={` ${user.role === 'admin' ? 'bg-green-600' : 'bg-cyan-600'} px-7 py-1 inline-block rounded-2xl  text-sm font-semibold text-white`}>
+                                                        {user.role}
+                                                    </span>
                                                 </td>
                                                 <th className="flex flex-col justify-center items-center">
-                                                    <button onClick={() => deleteUser(user._id)}class="btn btn-xs bg-red-600 ml-1 mt-1 border-red-600 focus:border-red-600 text-white hover:bg-red-600">
+                                                    <button onClick={() => deleteUser(user._id)} className="shadow-xl mt-1 py-1 px-8 text-sm rounded-md text-white font-bold bg-red-600">
                                                         Delete
                                                     </button>
                                                     {
                                                         user.role === 'admin' ?
-                                                            <button onClick={() => handleMakeUser(user.email)} class="btn btn-xs bg-cyan-600 ml-1 mt-1 border-cyan-600 focus:border-cyan-600 text-white hover:bg-cyan-600">
+                                                            <button onClick={() => handleMakeUser(user.email)} className="shadow-xl mt-1 py-1 px-5  text-sm rounded-md text-white font-bold bg-cyan-600">
                                                                 Make User
                                                             </button> :
-                                                            <button onClick={() => handleMakeAdmin(user.email)} class="btn btn-xs bg-green-600 ml-1 mt-1 border-green-600 focus:border-green-600 text-white hover:bg-green-600">
+                                                            <button onClick={() => handleMakeAdmin(user.email)} className="shadow-xl  text-sm mt-1 py-1 px-3 rounded-md text-white font-bold bg-green-600">
                                                                 Make Admin
                                                             </button>
                                                     }
