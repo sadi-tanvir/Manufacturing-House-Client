@@ -69,7 +69,7 @@ const Navbar = () => {
                         {/* middle point */}
                         {/* small size */}
                         <div class="navbar-center ml-[-30px] md:hidden">
-                        <img className="w-24 mt-2" src={logo} alt="" />
+                            <img className="w-24 mt-2" src={logo} alt="" />
                         </div>
 
 
@@ -87,19 +87,13 @@ const Navbar = () => {
                         <div className="hidden md:block">
                             <div class="flex justify-end items-center mt-5 md:ml-32">
                                 <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-7 py-2" to='/'>Home</CustomLink>
-                                {
-                                    isAdmin ? <>
-                                        <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-6 py-2" to='/dashboard/manageAllOrders'>Dashboard</CustomLink>
-                                    </> :
-                                        <>
-                                            <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-5 py-2" to='/dashboard/myOrders'>Dashboard</CustomLink>
-                                        </>
-                                }
+                                
+                                {user && <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-6 py-2" to={`/dashboard/${isAdmin ? "manageAllOrders": "myOrders"}`}>Dashboard</CustomLink>}
 
                                 <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-7 py-2" to='/blogs'>Blogs</CustomLink>
-                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-5 py-2" to='/portfolio'>Portfolio</CustomLink>
                                 {
                                     user ? <>
+                                        <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-5 py-2" to='/portfolio'>Portfolio</CustomLink>
                                         <button onClick={handleSignOut} className="bg-slate-700 text-white py-[6px] rounded px-8 font-bold ml-2">Logout</button>
                                     </> : <>
                                         <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-8 py-2" to='/login'>Login</CustomLink>

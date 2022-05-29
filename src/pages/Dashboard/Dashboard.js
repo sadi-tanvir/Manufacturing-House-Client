@@ -20,7 +20,7 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-3/5 md:w-60 bg-base-100 text-base-content">
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center mt-20">
             <div class="avatar online">
               <div class="w-16 shadow-md rounded-full">
                 <img src={user?.photoURL || emptyAvatar} alt='user pic' />
