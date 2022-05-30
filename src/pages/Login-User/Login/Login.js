@@ -8,7 +8,8 @@ import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useDispatch } from "react-redux"
 import { SET_ADMIN } from "../../../redux/actions/types"
-
+import { toast } from 'react-toastify';
+import Loading from "../../shared/Loader/Loading"
 
 
 const Login = () => {
@@ -30,6 +31,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    console.log(`from login`, user);
     // router
     const navigate = useNavigate()
     let location = useLocation();
@@ -46,10 +48,28 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password)
         const res = await axios(`${apiBaseUrl}/user/${email}`)
         localStorage.setItem('userRole', JSON.stringify(res.data.role))
-        if(res.data.role === 'admin'){
+        if (res.data.role === 'admin') {
             dispatch({ type: SET_ADMIN })
         }
     }
+
+
+
+
+
+    // catch error
+    // useEffect(() => {
+    //     if (loading) {
+    //         return <Loading />
+    //     }
+    // }, [loading])
+
+    // catch error
+    useEffect(() => {
+        if (error) {
+            toast.error(error?.message);
+        }
+    }, [error])
 
     useEffect(() => {
         if (user) {
@@ -65,8 +85,12 @@ const Login = () => {
         sendUserToDB()
     }, [user, authUser])
 
+    if (loading) {
+        return <Loading />
+    }
+
     return (
-        <div className="h-screen flex justify-center items-center">
+        <div className="min-h-screen flex justify-center items-center">
             <div className="card w-10/12 md:w-4/12 bg-base-100 shadow-xl py-5">
                 <div className="card-body">
                     <h1 className="text-sky-600 font-bold text-3xl text-center mb-5">Login</h1>
@@ -82,9 +106,8 @@ const Login = () => {
                                 <span onClick={() => navigate('/register')} className="text-red-400 cursor-pointer ml-1">Register</span>
                             </p>
                             <p className="text-sm ml-10">
-                                {/* <span onClick={() => navigate('/register')} className="text-red-600 cursor-pointer ml-1"></span> */}
                                 <label for='forgot-password' className="text-red-600 cursor-pointer ml-1">Lost Password?</label>
-                                {isClose && <ForgotPassword setClose={setClose} />}
+                                {isClose && <ForgotPassword isClose={isClose} setClose={setClose} />}
                             </p>
                         </div>
                         <div className="divider">OR</div>

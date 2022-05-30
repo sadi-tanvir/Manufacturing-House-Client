@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { HelmetProvider } from "react-helmet-async";
+import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store"
 import { Provider } from 'react-redux'
 

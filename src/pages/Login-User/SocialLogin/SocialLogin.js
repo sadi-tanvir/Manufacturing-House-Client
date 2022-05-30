@@ -4,7 +4,7 @@ import auth from '../../../firebase.init';
 import { useAuthState, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { apiBaseUrl } from '../../../utils/apiBaseUrl';
-
+import { toast } from 'react-toastify';
 
 
 const SocialLogin = () => {
@@ -27,6 +27,16 @@ const SocialLogin = () => {
         await signInWithGithub()
     }
 
+
+    // catch error
+    useEffect(() => {
+        if (gError) {
+            toast.error(gError?.message);
+        } else if (gitError) {
+            toast.error(gitError?.message);
+        }
+    }, [gError, gitError])
+
     useEffect(() => {
         if (user) {
             navigate(from, { replace: true });
@@ -41,7 +51,8 @@ const SocialLogin = () => {
         }
         sendUserToDB()
 
-    }, [user, gUser,gitUser])
+    }, [user, gUser, gitUser])
+
     return (
         <>
             <button onClick={handleSignInWithGoogle} type="button" class="text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,8 @@ import auth from "../../../firebase.init"
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { apiBaseUrl } from "../../../utils/apiBaseUrl"
 import axios from 'axios'
-
+import { toast } from 'react-toastify';
+import Loading from "../../shared/Loader/Loading"
 
 
 const Register = () => {
@@ -32,6 +33,7 @@ const Register = () => {
     }
 
 
+
     // router
     const navigate = useNavigate()
 
@@ -46,9 +48,16 @@ const Register = () => {
     }
 
 
-    // if (user) {
-    //     navigate('/')
-    // }
+       // catch error
+       useEffect(() => {
+        if (registerError) {
+            toast.error(registerError?.message);
+        }
+    }, [registerError])
+
+    if (loading) {
+        return <Loading />
+    }
 
     return (
         <div className="h-screen flex justify-center items-center">

@@ -24,6 +24,7 @@ import AdminAuth from './pages/Login-User/RequireAuth/AdminAuth';
 import UserAuth from "./pages/Login-User/RequireAuth/UserAuth"
 import Portfolio from './pages/Portfolio/Portfolio';
 import Blogs from './pages/Blogs/Blogs';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   // redux
@@ -111,6 +112,9 @@ const App = () => {
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
+      
+      {/* toast notification container */}
+      <ToastContainer />
     </>
   );
 };

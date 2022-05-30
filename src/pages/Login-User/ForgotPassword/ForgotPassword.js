@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
-const ForgotPassword = ({ setClose }) => {
+const ForgotPassword = ({ setClose,isClose }) => {
     const [email, setEmail] = useState("")
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
 
@@ -12,6 +13,13 @@ const ForgotPassword = ({ setClose }) => {
         await sendPasswordResetEmail(email);
         setClose(false)
     }
+
+    // catch error
+    useEffect(() => {
+        if (error) {
+            toast.error(error?.message);
+        }
+    }, [error])
 
 
     return (
