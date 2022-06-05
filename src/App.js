@@ -22,8 +22,6 @@ import { useDispatch } from "react-redux"
 import { SET_ADMIN } from "./redux/actions/types"
 import AdminAuth from './pages/Login-User/RequireAuth/AdminAuth';
 import UserAuth from "./pages/Login-User/RequireAuth/UserAuth"
-import Portfolio from './pages/Portfolio/Portfolio';
-import Blogs from './pages/Blogs/Blogs';
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
@@ -86,14 +84,6 @@ const App = () => {
         <Route path="/payment/:productId" element={
           <RequireAuth>
             <Payment />
-          </RequireAuth>
-        } />
-
-        <Route path="/blogs" element={<Blogs />} />
-
-        <Route path="/portfolio" element={
-          <RequireAuth>
-            <Portfolio />
           </RequireAuth>
         } />
 

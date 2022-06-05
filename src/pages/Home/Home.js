@@ -1,5 +1,4 @@
 import React from 'react';
-import Blogs from '../Blogs/Blogs';
 import HomeBusinessSummary from './HomeBusinessSummary/HomeBusinessSummary';
 import HomeCarousel from './HomeCarousel/HomeCarousel';
 import HomeOurProducts from './HomeOurProducts/HomeOurProducts';
@@ -12,7 +11,6 @@ const Home = () => {
             <HomeOurProducts />
             <HomeBusinessSummary />
             <HomeReview />
-            <Blogs />
         </div>
     );
 };

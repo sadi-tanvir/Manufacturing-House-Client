@@ -50,8 +50,6 @@ const Navbar = () => {
                                                         <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/dashboard/myOrders'>Dashboard</CustomLink>
                                                     </>
                                             }
-                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/blogs'>Blog</CustomLink>
-                                            <CustomLink className="no-underline font-semibold md:font-bold rounded-md text-sm px-3 py-2 block mt-2" to='/portfolio'>Protfolio</CustomLink>
                                             <li className="">
                                                 <button onClick={handleSignOut} className="bg-slate-700 text-white px-4 ml-1 py-2 rounded font-bold mt-2">Logout</button>
                                             </li>
@@ -89,11 +87,8 @@ const Navbar = () => {
                                 <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-7 py-2" to='/'>Home</CustomLink>
                                 
                                 {user && <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-6 py-2" to={`/dashboard/${isAdmin ? "manageAllOrders": "myOrders"}`}>Dashboard</CustomLink>}
-
-                                <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-7 py-2" to='/blogs'>Blogs</CustomLink>
                                 {
                                     user ? <>
-                                        <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-5 py-2" to='/portfolio'>Portfolio</CustomLink>
                                         <button onClick={handleSignOut} className="bg-slate-700 text-white py-[6px] rounded px-8 font-bold ml-2">Logout</button>
                                     </> : <>
                                         <CustomLink className="shadow-md no-underline font-semibold md:font-bold rounded-md text-sm px-8 py-2" to='/login'>Login</CustomLink>
